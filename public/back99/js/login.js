@@ -20,12 +20,6 @@ $(function() {
 
     // 配置的校验字段
     fields: {
-      // 校验时图标显示 
-      feedbackIcons: {
-        valid: 'glyphicon glyphicon-ok',
-        invalid: 'glyphicon glyphicon-remove',
-        validating: 'glyphicon glyphicon-refresh'
-      },
       username: {
         // 配置校验规则, 注意不要少了 s
         validators: {
@@ -63,8 +57,7 @@ $(function() {
             message: "密码错误"
           }
         }
-      },
-
+      }
     }
 
   });
