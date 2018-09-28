@@ -26,4 +26,49 @@
     NProgress.done(); 
   },500);
   });
+
+  // 公共效果  
+/*
+  1 二级菜单切换效果
+  2 左侧菜单栏切换
+  3 退出效果 
+
+* */
+$(function () {
+  //  1. 二级菜单显示与隐藏
+  $('.lt_aside .category').on('click',function () {
+
+     $('.lt_aside .child').stop().slideToggle();
+     
+  })
+  // 2. 左侧菜单栏切换功能 
+  $('.icon_menu').click(function () {
+     $('.lt_aside').toggleClass('hidemenu');
+     $('.lt_topbar').toggleClass('hidemenu');
+     $('.lt_main').toggleClass('hidemenu');
+  })
+  // 3. 退出效果 
+  // 点击退出显示模态框
+  $('.icon_modal').click(function () {
+    $('#logoutModal').modal('show');
+  })
+
+  // 退出功能 应在后台提供接口 在服务器端销毁用户的登录状态 
+  $('#logoutBtn').click(function () {
+     $.ajax({
+       type: "get",
+       url: "/employee/employeeLogout",
+       dataType: "json",
+       success: function (info) {
+          if(info.success) {
+            // 退出成功,跳转到登录页 
+            location.href = "login.html";            
+          }        
+       }
+     });
+  });
+
+})
+
+  
   
