@@ -167,11 +167,11 @@
   <script type="text/html" id="tpl">
     {{ each rows v i }}
       <tr>           
-        <td width="10%">{{ (i+1) + (page - 1) * size }}</td>	
-        <td width="20%">{{ v.username }}</td>	
-        <td width="30%">{{ v.mobile }}</td>	
-        <td width="20%">{{ v.isDelete === 1 ? "正常" : "禁用" }}</td>
-        <td width="20%" data-id="{{ v.id }}">
+        <td>{{ (i+1) + (page - 1) * size }}</td>	
+        <td>{{ v.username }}</td>	
+        <td>{{ v.mobile }}</td>	
+        <td>{{ v.isDelete === 1 ? "正常" : "禁用" }}</td>
+        <td data-id="{{ v.id }}">
           {{ if v.isDelete === 1 }}
           <button class="btn btn-danger">禁用</button>
           {{ /if }}

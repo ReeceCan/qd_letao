@@ -64,6 +64,22 @@
           <li class="active">一级分类</li>
       </ol>      
 
+      <div class="lt_content">
+        <button class="btn btn-default m_bt20">添加分类</button>
+
+        <!-- 表格  -->
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th width="20%">序号</th>
+              <th width="80%">一级分类名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 挖个坑,动态渲染  -->
+          </tbody>
+        </table>
+      </div>
      
     </div>
   </div>
@@ -95,16 +111,27 @@
   </div>
 </div>
 
+  <!-- 模板引擎  准备结构 -->
+  <script type="text/html" id="tmpFirst">
+    {{ each rows v i }}
+      <tr>
+        <td>{{ (i+1) + size * (page-1) }}</td>
+        <td>{{ v.categoryName }}</td>
+      </tr>
+    {{ /each }}
+  </script>
+
   <script src="./lib/jquery/jquery.js"></script>
   <script src="./lib/bootstrap/js/bootstrap.js"></script>
   <script src="./lib/nprogress/nprogress.js"></script>
+  <!-- 引入模板引擎  -->
+  <script src="./lib/artTemplate/template-web.js"></script>
 
   <!-- 引入自己的js文件  -->
   <!-- 公共js文件  -->
   <script src="./js/common.js"></script>
   <script src="./js/checkLogin.js"></script>
-  <!-- 首页index文件  -->
-  <script src="./js/index.js"></script>
+  <script src="./js/first.js"></script>
 
 </body>
 </html>
