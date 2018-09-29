@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
   <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
   <link rel="stylesheet" href="./css/common.css">
   <title>Document</title>
@@ -84,11 +85,11 @@
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
-              <th>序号</th>
-              <th>用户名</th>
-              <th>手机号</th>
-              <th>状态</th>
-              <th>操作</th>
+              <th width="10%">序号</th>
+              <th width="20%">用户名</th>
+              <th width="30%">手机号</th>
+              <th width="20%">状态</th>
+              <th width="20%">操作</th>
             </tr>
           </thead>
           <tbody>
@@ -108,6 +109,30 @@
     </div>
   </div>
 
+
+  <!-- 启用禁用模态框 -->
+  <div class="modal fade" tabindex="-1" id="userModal">
+    <div class="modal-dialog  modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <div class="modal-body">
+          <p class="red">
+            <i class="glyphicon glyphicon-info-sign"></i>
+            <span>您确定要执行此操作吗?</span>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="submitBtn">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- 用于登录退出的模态框 
       模态框有大小有三个,默认 madal-lg大型 modal-sm 小型
@@ -142,26 +167,25 @@
   <script type="text/html" id="tpl">
     {{ each rows v i }}
       <tr>           
-        <td>{{ (i+1) + (page - 1) * size }}</td>	
-        <td>{{ v.username }}</td>	
-        <td>{{ v.mobile }}</td>	
-        <td>{{ v.isDelete === 1 ? "正常" : "禁用" }}</td>
-        <td>
+        <td width="10%">{{ (i+1) + (page - 1) * size }}</td>	
+        <td width="20%">{{ v.username }}</td>	
+        <td width="30%">{{ v.mobile }}</td>	
+        <td width="20%">{{ v.isDelete === 1 ? "正常" : "禁用" }}</td>
+        <td width="20%" data-id="{{ v.id }}">
           {{ if v.isDelete === 1 }}
           <button class="btn btn-danger">禁用</button>
           {{ /if }}
-          {{ if v.isDelete === 1 }}
+          {{ if v.isDelete === 0 }}
           <button class="btn btn-success">启用</button>
           {{ /if }}
        </td> 
       </tr>
     {{ /each }}
-
-  
   </script>
 
   <script src="./lib/jquery/jquery.js"></script>
   <script src="./lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="./lib/bootstrap-validator/js/bootstrapValidator.js">
   <script src="./lib/nprogress/nprogress.js"></script>
   <script src="./lib/artTemplate/template-web.js"></script>
   <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>

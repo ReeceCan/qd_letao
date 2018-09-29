@@ -11,6 +11,14 @@ ul {
   margin: 0;
 }
 
+.table.table-bordered.table-hover tr > th, 
+.table.table-bordered.table-hover tr > td {
+  /* 文字垂直对齐  */
+  vertical-align: middle;
+  /* 文字居中对齐  */
+  text-align: center;
+}
+
 .body_bg {
   background-color: #222d32;
 }
