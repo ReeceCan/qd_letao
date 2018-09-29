@@ -51,7 +51,69 @@ $(function () {
       }
     });
   }
-  
 
+  // 添加分类功能   
+  
+  // 思路  : 
+
+  // 1.  引入模态框  点击按钮显示模态框 .
+  // 2.  表单验证功能  
+
+  $('#addCate').click(function () {
+     $('#addCateModal').modal('show');
+  });
+
+  // 通过表单校验插件实现表单的校验  
+  //初始化表单校验插件 
+  $('#form').bootstrapValidator({
+    // 配置图标 
+    feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',  //校验成功
+      invalid: 'glyphicon glyphicon-remove', //校验失败 
+      validating: 'glyphicon glyphicon-refresh' // 校验中
+    },
+
+    // 指定校验字段
+    fields: {
+      //配置校验规则,校验name非空 
+      categoryName: {
+        validators: {
+          //不能为空
+          notEmpty: {
+            message: '请输入一级分类名称'
+          },
+        }
+      },
+    }
+
+  });
+
+  // 注册表单校验成功事件  校验成功后,发送ajax请求给后台,添加数据并渲染到页面上 
+  $('#form').on('success.form.bv',function (e) {
+    // 阻止默认跳转行为  
+     e.preventDefault();
+     
+    //  发送ajax请求 ,添加1级分类,并返回数据渲染到页面上  
+    $.ajax({
+      type: "post",
+      url: "/category/addTopCategory",
+      data: $('#form').serialize(),
+      dataType: "json",
+      success: function (info) {
+        //  console.log(info);
+         if(info.success) {
+          //  关闭模态框 
+          $('#addCateModal').modal('hide');
+
+          // 重新渲染第一页面  
+          currentPage = 1;
+          render();
+          // 表单内容和校验状态都要重置   resetForm传true才能将内容和状态全部重置
+          $('#form').data('bootstrapValidator').resetForm(true);
+         }
+      }
+    })
+  })
+ 
 
 })
