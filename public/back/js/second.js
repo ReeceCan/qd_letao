@@ -28,7 +28,7 @@ $(function () {
         $('tbody').html(strHtml);
 
         // 功能2 分页功能 
-        $("#boxPaginator").bootstrapPaginator({
+        $("#boxPaginator2nd").bootstrapPaginator({
           // 对应bootstrap版本
           bootstrapMajorVersion: 3,
           currentPage: info.page,//当前页
@@ -36,11 +36,11 @@ $(function () {
           size: "small",//设置控件的大小，mini, small, normal,large
           onPageClicked: function (a, b, c, page) {
             //为按钮绑定点击事件 page:当前点击的按钮值
-            // console.log(page);
+            console.log(page);
             
-            // currentPage = page;
+            pageCurrent = page;
             // // // 渲染到当前页 
-            // render();
+            render();
 
           }
         });
