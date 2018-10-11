@@ -32,22 +32,11 @@
       <div class="mui-scroll-wrapper">
         <div class="mui-scroll">
           <div class="lt_search">
-            <input type="text" placeholder="请输入关键字">
+            <input class="search_input" type="text" placeholder="请输入关键字">
             <button class="mui-btn mui-btn-primary search_btn">搜索</button>           
           </div>
           <div class="lt_history">
-            <div class="title">
-                <span class="mui-pull-left">搜索历史</span>
-                <span class="mui-pull-right"><i class="fa fa-trash"></i>清空记录</span>
-            </div>
-            <div class="content">
-              <ul>
-                <li><a href="#" class="mui-pull-left">1</a><i class="mui-pull-right mui-icon mui-icon-closeempty"></i></li>
-                <li><a href="#" class="mui-pull-left">1</a><i class="mui-pull-right mui-icon mui-icon-closeempty"></i></li>
-                <li><a href="#" class="mui-pull-left">1</a><i class="mui-pull-right mui-icon mui-icon-closeempty"></i></li>
-                <li><a href="#" class="mui-pull-left">1</a><i class="mui-pull-right mui-icon mui-icon-closeempty"></i></li>
-              </ul>
-            </div>
+            <!-- 挖个坑  -->
           </div>
          
         </div>
@@ -83,14 +72,35 @@
 
       </ul>
     </div>
-
-
   </div>
-
+  <!-- 模板引擎 用于渲染搜索历史记录 -->
+  <script type="text/html" id="history_tpl">
+    {{ if arr.length === 0 }}
+      <p>没有更多数据了</p>
+    {{ else }}
+    <div class="title">
+        <span class="mui-pull-left">搜索历史</span>
+        <span class="mui-pull-right icon_empty"><i class="fa fa-trash "></i>清空记录</span>
+    </div>
+    <div class="content">
+      <ul>
+        {{ each arr v i }}
+          <li>
+            <a href="#" class="mui-pull-left">{{ v }}</a>
+            <i data-index="{{ i }}" class="icon_delete mui-pull-right mui-icon mui-icon-closeempty"></i>
+          </li>
+        {{ /each }}
+      </ul>
+    </div>
+    {{ /if }}
+  </script>
 
   <!-- 引入mui  -->
   <script src="./lib/mui/js/mui.js"></script>
+  <script src="./lib/zepto/zepto.min.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
   <script src="./js/common.js"></script>
+  <script src="./js/search.js"></script>
 
 </body>
 
