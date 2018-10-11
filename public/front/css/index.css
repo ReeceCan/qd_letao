@@ -1,0 +1,41 @@
+
+/* 导航区域  */
+.lt_nav {
+  padding: 10px;
+}
+.lt_nav li {
+  float: left;
+  width: 33.3%;
+
+}
+.lt_nav li a {
+  display: block;
+}
+
+/* 产品模块 */
+.lt_product {
+  padding: 10px;
+}
+
+.lt_product li {
+  float: left;
+  width: 48%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.lt_product li:nth-child(2n+1) {
+  margin-right: 4%;
+}
+.lt_product li .newPrice {
+  color: #ff0000;
+
+}
+.lt_product li a {
+  display: block;
+}
+.lt_product li .oldPrice {
+  text-decoration: line-through;
+}
