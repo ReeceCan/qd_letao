@@ -1,0 +1,32 @@
+.main {
+  background-color: #cce8cf;
+}
+/* 左侧区域 */
+.lt_category_left {
+  width: 90px;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+.lt_category_left li a {
+  display: block;
+  height: 50px;
+  background-color: #e3e4e5;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  line-height: 50px;
+}
+
+.lt_category_left li a.current {
+  background-color: transparent;
+  border-right: none;
+}
+
+/* 右侧区域 */
+.lt_category_right {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
